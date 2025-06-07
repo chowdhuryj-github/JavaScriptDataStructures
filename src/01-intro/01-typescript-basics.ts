@@ -28,11 +28,11 @@ printName(john)
 printName(mary)
 
 // OOP interface
-interface Comparable {
+interface Comparable<T> { // moidified into a generic
     compareTo(b: any) : number;
 }
 
-class MyObject implements Comparable {
+class MyObject implements Comparable<MyObject> {
 
     age: number;
 
@@ -40,7 +40,7 @@ class MyObject implements Comparable {
         this.age = age;
     }
 
-    compareTo(b: any): number {
+    compareTo(b: MyObject): number {
         if(this.age === b.age) {
             return 0;
         }
@@ -49,7 +49,7 @@ class MyObject implements Comparable {
     }
 }
 
-function compareTwoObjects(a: Comparable, b: Comparable) {
+function compareTwoObjects(a: Comparable<MyObject>, b: Comparable<MyObject>) {
     console.log(a.compareTo(b));
     console.log(b.compareTo(a));
 }
